@@ -1,25 +1,26 @@
 import { Model, DataTypes } from "sequelize";
 import { sequelize } from "../instances/mysql";
 
-export interface ImdbInstance2 extends Model{
-    idT: number
-    nameT: string
-    notaT: number
+export interface ImdbFnstance extends Model{
+    idF: number
+    nameF: string
+    notaF: number
 }
 
-export const Imdb2 = sequelize.define<ImdbInstance2>("Imd2",{
-    idT:{
+export const ImdbF = sequelize.define<ImdbFnstance>("ImdbF",{
+    idF:{
         primaryKey: true,
         autoIncrement: true,
         type: DataTypes.INTEGER
     },
-    nameT:{
+    nameF:{
         type: DataTypes.STRING
     },
-    notaT:{
-        type: DataTypes.INTEGER
+    notaF:{
+        type: DataTypes.FLOAT
     }
 },{
-    tableName: 'tv',
+    tableName: 'films',
     timestamps: false
 })
+
