@@ -2,7 +2,7 @@ import express, { Request, Response } from "express"
 import path from "path"
 import mustache from 'mustache-express'
 import dotenv from 'dotenv'
-import mainRouter from './src/routes/index'
+import mainRouter from './routes/index'
 
 dotenv.config()
 
@@ -19,7 +19,7 @@ server.use(express.urlencoded({extended:true}))
 server.use(mainRouter)
 
 server.use((req: Request, res: Response)=>{
-    res.send(404).send('Paginá não encontrada')
+    res.status(404).send('Paginá não encontrada')
 })
 
 server.listen(process.env.PORT)
