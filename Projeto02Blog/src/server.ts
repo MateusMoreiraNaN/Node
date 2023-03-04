@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import mainRoutes from './routes/main'
 import mustache from 'mustache-express'
 import bodyParser from 'body-parser'
+import slugify from 'slugify';
 
 dotenv.config()
 
