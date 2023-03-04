@@ -13,5 +13,6 @@ export const categories = async (req: Request, res: Response)=>{
 }
 
 export const admin = async (req: Request, res: Response)=>{
-    res.send("ROTA PARA CRIAR UMA NOVA CATEGORIA")
+    
+    res.render("pages/admin/categories/new")
 }
