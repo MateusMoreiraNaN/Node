@@ -14,3 +14,4 @@ export const Category = sequelize.define<CategoryInstance>("Category",{
     tableName: 'category',
     timestamps: false
 })
+

@@ -1,5 +1,6 @@
 import { Model, DataTypes } from "sequelize"
 import { sequelize } from "../instances/mysql"
+import { Category, CategoryInstance } from './Category'
 
 export interface ArticlesInstance extends Model{
     title: string
@@ -20,3 +21,7 @@ export const Articles = sequelize.define<ArticlesInstance>("Articles",{
     tableName: 'articles',
     timestamps: false
 })
+
+Category.hasMany(Articles)
+Articles.belongsTo(Category)
+
