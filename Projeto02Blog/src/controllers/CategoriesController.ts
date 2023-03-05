@@ -23,6 +23,7 @@ export const admin = async (req: Request, res: Response)=>{
 
 export const save = async (req: Request, res: Response)=>{
     let title = req.body.title
+   
     if(title != undefined){
         await Category.create({
             title: title,
@@ -35,7 +36,9 @@ export const save = async (req: Request, res: Response)=>{
     }else{
         res.redirect("/admin/categories/new")
     }
+    
 
     
 
+    res.redirect('/')
 }
