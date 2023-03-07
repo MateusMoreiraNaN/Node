@@ -21,7 +21,9 @@ server.use(bodyParser.json())
 
 server.use(mainRoutes);
 
-server.use((req, res)=>{
+
+
+server.use((req: Request, res: Response)=>{
     res.status(404).send('Página não encontrada!');
 });
 

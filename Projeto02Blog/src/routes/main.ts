@@ -1,5 +1,5 @@
-import Router from 'express'
-import * as HomeController from '../controllers/homeController.'
+import { Router } from 'express'
+import * as HomeController from '../controllers/homeController'
 import * as CategoriesController from '../controllers/CategoriesController'
 import * as ArticlesController from '../controllers/ArticlesController'
 
