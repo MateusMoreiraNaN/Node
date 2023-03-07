@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { Op, where } from "sequelize";
-import slugify from 'slugify';
-import { Category, CategoryInstance } from '../models/Category'
+import { Category} from '../models/Category'
 import bodyParser from 'body-parser'
 
 
@@ -22,12 +21,13 @@ export const admin = async (req: Request, res: Response)=>{
 }
 
 export const save = async (req: Request, res: Response)=>{
-    let title = req.body.title
+    
+    let title, slug = req.body.title
    
-    if(title != undefined){
+    if(title){
         await Category.create({
             title: title,
-            slug: slugify(title)
+            //slug: slugify(title)
 
            
         }).then(()=>{
@@ -37,8 +37,10 @@ export const save = async (req: Request, res: Response)=>{
         res.redirect("/admin/categories/new")
     }
     
+    
 
     
 
-    res.redirect('/')
+    
+    
 }

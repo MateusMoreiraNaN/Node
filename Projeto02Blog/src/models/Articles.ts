@@ -1,10 +1,11 @@
 import { Model, DataTypes } from "sequelize"
 import { sequelize } from "../instances/mysql"
-import { Category, CategoryInstance } from './Category'
+import { Category} from './Category'
+
 
 export interface ArticlesInstance extends Model{
     title: string
-    body: string
+    
 }
 
 export const Articles = sequelize.define<ArticlesInstance>("Articles",{
