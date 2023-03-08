@@ -12,11 +12,6 @@ export const Articles = sequelize.define<ArticlesInstance>("Articles",{
     title:{
         type: DataTypes.STRING,
         allowNull: false
-    },
-    body:{
-        type: DataTypes.STRING,
-        allowNull: false
-
     }
 },{
     tableName: 'articles',

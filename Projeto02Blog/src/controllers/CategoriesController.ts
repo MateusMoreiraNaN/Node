@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { Op, where } from "sequelize";
 import { Category, CategoryInstance} from '../models/Category'
 import bodyParser from 'body-parser'
+import slugify from 'slugify'
 
 
 
@@ -38,15 +39,40 @@ export const save = async (req: Request, res: Response)=>{
     }
     */
     
-    let { title } = req.body.title
+    let { title, slug } = req.body.title
 
-    let newCategory = await Category.create({
-        title
-    })
+    
 
-    await newCategory.save()
+    if(title != undefined){
+        const newCategory = Category.build({
+            title: title,
+            slug: slugify(title)
+        })
 
-    res.redirect("/")
+        await newCategory.save()
+
+        
+        
+        
+        
+    }
+
+    res.redirect('/');
+
+    
+
+    
+
+    
+
+    
+
+
+    
+
+    
+
+   
 
     
     
