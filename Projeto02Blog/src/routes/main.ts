@@ -9,7 +9,7 @@ const router = Router()
 
 router.get('/', HomeController.home)
 router.get('/categories', CategoriesController.categories)
-router.post('/admin/categories/new', CategoriesController.admin)
+router.get('/admin/categories/new', CategoriesController.admin)
 router.post('/categories/save', CategoriesController.save)
 router.get('/articles', ArticlesController.articles)
 router.get('/admin/articles/new', ArticlesController.adminArticles)
