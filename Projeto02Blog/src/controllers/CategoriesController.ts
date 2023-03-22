@@ -20,7 +20,7 @@ export const admin = async (req: Request, res: Response)=>{
 
    
     
-    res.render("pages/admin/categories/new")
+    res.render("admin/categories/new")
 }
 
 export const save = async (req: Request, res: Response)=>{
@@ -47,5 +47,11 @@ export const save = async (req: Request, res: Response)=>{
 }
 
 export const adminCategory = async (req: Request, res: Response)=>{
-    res.render("pages/admin/categories/index")
+
+    Category.findAll()
+    
+    
+    res.render("admin/categories/index",{
+        Category
+    })
 }
