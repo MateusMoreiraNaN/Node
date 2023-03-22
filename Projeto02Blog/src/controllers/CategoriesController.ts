@@ -24,23 +24,7 @@ export const admin = async (req: Request, res: Response)=>{
 }
 
 export const save = async (req: Request, res: Response)=>{
-    /*
-    let title, slug = req.body.title
    
-    if(title){
-        await Category.create({
-            title: title,
-            //slug: slugify(title)
-
-           
-        }).then(()=>{
-            res.redirect("/")
-        })
-    }else{
-        res.redirect("/admin/categories/new")
-    }
-    */
-    
     let { title } = req.body
 
     if(title){
@@ -60,4 +44,8 @@ export const save = async (req: Request, res: Response)=>{
 
 
 
+}
+
+export const adminCategory = async (req: Request, res: Response)=>{
+    res.render("pages/admin/categories/index")
 }
