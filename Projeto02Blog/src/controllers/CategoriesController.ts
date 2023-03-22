@@ -48,10 +48,10 @@ export const save = async (req: Request, res: Response)=>{
 
 export const adminCategory = async (req: Request, res: Response)=>{
 
-    Category.findAll()
-    
-    
-    res.render("admin/categories/index",{
-        Category
+    Category.findAll().then(categories =>{
+        res.render("admin/categories/index", {categories: categories})
     })
+    
+    
+    
 }
