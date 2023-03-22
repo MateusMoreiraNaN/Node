@@ -37,7 +37,7 @@ export const save = async (req: Request, res: Response)=>{
         res.redirect("/admin/categories/new")
     }
     
-    res.redirect('/') 
+    res.redirect("/admin/categories/index") 
 
     
         
@@ -54,4 +54,23 @@ export const adminCategory = async (req: Request, res: Response)=>{
     
     
     
+}
+
+export const deleteId = async (req: Request, res: Response)=>{
+    let { id } = req.body
+
+    if(id){
+        if(!isNaN(id)){
+            await Category.destroy({
+                where: {
+                    id: id
+                }
+            })
+            res.redirect("/admin/categories/index")
+        }else{
+            res.redirect("/admin/categories/index")
+        }
+    }else{
+        res.redirect("/admin/categories/index")
+    }
 }
