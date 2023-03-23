@@ -10,7 +10,7 @@ export interface CategoryInstance extends Model{
 }
 
 export const Category = sequelize.define<CategoryInstance>("Category",{
-    id : {
+    id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
