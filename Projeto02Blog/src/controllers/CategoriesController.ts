@@ -80,8 +80,8 @@ export const edit = async(req: Request, res: Response)=>{
 
 
     Category.findByPk(id)
-    if(Category){
-        res.render("admin/categories/edit", {categories: categories})
+    if(category){
+        res.render("admin/categories/edit", {category: category})
     }else{
         res.redirect("/admin/categories/index")
 
