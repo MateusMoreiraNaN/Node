@@ -104,3 +104,8 @@ export const edit = async(req: Request, res: Response)=>{
     }
     
 }
+
+export const update = async(req: Request, res: Response)=>{
+    let { id } = req.body
+    let { title } = req.body
+}

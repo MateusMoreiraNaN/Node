@@ -16,5 +16,6 @@ router.get('/articles', ArticlesController.articles)
 router.get('/admin/articles/new', ArticlesController.adminArticles)
 router.get('/admin/categories/index', CategoriesController.adminCategory)
 router.get('/admin/categories/edit/:id', CategoriesController.edit)
+router.post('/categories/update', CategoriesController.update)
 
 export default router
