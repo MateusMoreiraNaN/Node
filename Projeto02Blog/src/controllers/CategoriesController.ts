@@ -34,7 +34,7 @@ export const save = async (req: Request, res: Response)=>{
 
         await newCategory.save()
     }else{
-        res.redirect("/admin/categories/new")
+        res.render("admin/categories/edit",{categories:categories})
     }
     
     res.redirect("/admin/categories/index") 
@@ -76,14 +76,31 @@ export const deleteId = async (req: Request, res: Response)=>{
 }
 
 export const edit = async(req: Request, res: Response)=>{
-    let id = req.params.id
+    let { id } = req.params
 
-
+    /*
     Category.findByPk(id)
-    if(category){
-        res.render("admin/categories/edit", {category: category})
+    if(Category != undefined){
+        res.render("admin/categories/edit", {Category: Category})
     }else{
         res.redirect("/admin/categories/index")
 
     }
+    */
+    
+
+    
+    let categoria = await Category.findByPk(id)
+    if(categoria != undefined){
+        if(req.body.title){
+            categoria.title = req.body.title
+        }
+
+        res.render("admin/categories/edit", {categoria: categoria})
+
+        
+    }else{
+        res.redirect("/admin/categories/index")
+    }
+    
 }
