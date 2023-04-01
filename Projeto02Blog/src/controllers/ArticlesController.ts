@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { Op, where } from "sequelize";
-import { Articles, ArticlesInstance } from '../models/Articles'
+import { Article, ArticlesInstance } from '../models/Articles'
 import { Category } from "../models/Category";
 
 export const articles = async (req: Request, res: Response)=>{
@@ -14,4 +14,8 @@ export const adminArticles = async (req: Request, res: Response)=>{
     }
 
     
+}
+
+export const save = async (req: Request, res: Response)=>{
+
 }

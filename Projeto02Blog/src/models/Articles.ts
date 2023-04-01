@@ -10,7 +10,7 @@ export interface ArticlesInstance extends Model{
     
 }
 
-export const Articles = sequelize.define<ArticlesInstance>("Articles",{
+export const Article = sequelize.define<ArticlesInstance>("Articles",{
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -27,6 +27,6 @@ export const Articles = sequelize.define<ArticlesInstance>("Articles",{
     timestamps: false
 })
 
-Category.hasMany(Articles)
-Articles.belongsTo(Category)
+Category.hasMany(Article)
+Article.belongsTo(Category)
 
