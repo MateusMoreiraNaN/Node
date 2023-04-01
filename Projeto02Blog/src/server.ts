@@ -1,7 +1,8 @@
 import express, { Request, Response } from 'express';
 import path from 'path'
 import dotenv from 'dotenv'
-import mainRoutes from './routes/main'
+import RouterCategory from './routes/RouterCategory'
+import RouterArticles from './routes/RouterArticles'
 //import mustache from 'mustache-express'
 import ejs from 'express-ejs-layouts'
 import bodyParser from 'body-parser'
@@ -22,7 +23,8 @@ server.use(express.urlencoded({extended: true}));
 server.use(bodyParser.urlencoded({extended: false}))
 server.use(bodyParser.json())
 
-server.use(mainRoutes);
+server.use(RouterCategory)
+server.use(RouterArticles)
 
 
 
