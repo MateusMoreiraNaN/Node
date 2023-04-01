@@ -1,0 +1,51 @@
+<%- include('../../partials/header.ejs'); -%>
+<%- include('../../partials/navBar.ejs'); -%>
+
+<div class="container">
+    
+    <div class="card">
+            <div class="card-header">
+                <h2>Novo artigo</h2>
+            </div>
+            
+            <div class="card-body">
+                <form method="POST" class="form-control" action="/categories/save">
+                    <input type="text" name="title" placeholder="Define o título do artigo"><br><br>
+                    <textarea class="form-control" placeholder="Escreva o artigo aqui!" name="body" id="">
+
+                    </textarea>
+                    <br>
+                    <label for="">Categoria</label>
+                    <select name="category" class="form-control">
+                      <% categories.forEach((categoria) =>{ %>
+                        <option value="<%= categoria.id %>"><%= categoria.title %></option>
+                      
+                      <% }) %>
+                    </select>
+                    <br>
+                    <button class="btn      btn-success">Cadastrar</button>
+                </form>
+            </div>
+
+    </div>
+</div>
+
+
+
+<%- include('../../partials/footer.ejs'); -%>
+
+<script src="/tinymce/tinymce.min.js"></script>
+
+<script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+      tinycomments_mode: 'embedded',
+      tinycomments_author: 'Author name',
+      mergetags_list: [
+        { value: 'First.Name', title: 'First Name' },
+        { value: 'Email', title: 'Email' },
+      ]
+    });
+  </script>

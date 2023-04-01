@@ -4,14 +4,23 @@ import { Category} from './Category'
 
 
 export interface ArticlesInstance extends Model{
-    title: string
+    title: string,
+    //slug: string,
+    id: number,
     
 }
 
 export const Articles = sequelize.define<ArticlesInstance>("Articles",{
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
     title:{
         type: DataTypes.STRING,
-        allowNull: false
+        //autoIncrement: true,
+        //allowNull: false
+        
     }
 },{
     tableName: 'articles',
