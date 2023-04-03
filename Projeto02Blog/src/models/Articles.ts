@@ -21,6 +21,9 @@ export const Article = sequelize.define<ArticlesInstance>("Articles",{
         //autoIncrement: true,
         //allowNull: false
         
+    },
+    categoryId:{
+        type: DataTypes.VIRTUAL
     }
 },{
     tableName: 'articles',

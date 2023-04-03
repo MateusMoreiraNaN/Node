@@ -17,5 +17,13 @@ export const adminArticles = async (req: Request, res: Response)=>{
 }
 
 export const save = async (req: Request, res: Response)=>{
+    let { title } = req.body
+    let { body } = req.body
+    let { categoria } = req.body
 
+    Article.create({
+        title: title,
+        body: body,
+        categoryId: categoria
+    })
 }
