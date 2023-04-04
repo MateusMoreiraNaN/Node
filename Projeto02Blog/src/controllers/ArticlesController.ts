@@ -4,7 +4,7 @@ import { Article, ArticlesInstance } from '../models/Articles'
 import { Category } from "../models/Category";
 
 export const articles = async (req: Request, res: Response)=>{
-    res.send("ROTAS DE ARTIGOS")
+    res.render("admin/articles/index")
 }
 
 export const adminArticles = async (req: Request, res: Response)=>{
