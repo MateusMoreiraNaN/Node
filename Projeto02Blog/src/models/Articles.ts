@@ -7,6 +7,9 @@ export interface ArticlesInstance extends Model{
     title: string,
     //slug: string,
     id: number,
+    categoryId: number,
+    body: string,
+    categoria: string
     
 }
 
@@ -19,11 +22,16 @@ export const Article = sequelize.define<ArticlesInstance>("Articles",{
     title:{
         type: DataTypes.STRING,
         //autoIncrement: true,
-        //allowNull: false
+        allowNull: false
         
     },
     categoryId:{
-        type: DataTypes.VIRTUAL
+        type: DataTypes.NUMBER,
+        allowNull: false
+    },
+    body:{
+        type: DataTypes.STRING,
+        allowNull: false
     }
 },{
     tableName: 'articles',

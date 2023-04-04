@@ -21,9 +21,33 @@ export const save = async (req: Request, res: Response)=>{
     let { body } = req.body
     let { categoria } = req.body
 
-    Article.create({
-        title: title,
-        body: body,
-        categoryId: categoria
-    })
+    if(title && body && categoria){
+        let newArticle = new Article()
+
+        newArticle.title = title,
+        newArticle.body = body
+        newArticle.categoria = categoria
+
+        await newArticle.save()
+    }else{
+        res.redirect('/admin/articles/new')
+    }
+
+    res.redirect('/admin/articles')
+
+
+    /*
+    if(title && body && categoria){
+        await Article.create({
+            title: title,
+            body: body,
+            categoryId: categoria,
+     
+        })
+
+        res.redirect('/admin/articles')
+    }else{
+        res.redirect('/admin/articles/new')
+    }
+    */
 }
