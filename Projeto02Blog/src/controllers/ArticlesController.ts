@@ -2,9 +2,14 @@ import { Request, Response } from "express";
 import { Op, where } from "sequelize";
 import { Article, ArticlesInstance } from '../models/Articles'
 import { Category } from "../models/Category";
+import { categories } from "./CategoriesController";
 
 export const articles = async (req: Request, res: Response)=>{
-    res.render("admin/articles/index")
+    Article.findAll({
+        include: [{model: Category}]
+    }).then(articles =>{
+        res.render("admin/articles/index",{articles: articles})
+    })
     
 }
 
@@ -27,7 +32,7 @@ export const save = async (req: Request, res: Response)=>{
 
         newArticle.title = title,
         newArticle.body = body
-        newArticle.categoria = categoria
+        newArticle.categoryId = categoria
 
         await newArticle.save()
     }else{

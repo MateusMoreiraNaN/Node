@@ -16,8 +16,14 @@
             </tr>
         </thead>
         <tbody>
-            
-           
+            <% articles.forEach(Article => { %>
+                <tr>
+                    <th><%= Article.id %></th>
+                    <th><%= Article.title %></th>
+                    <th><%= Article.categoryId %></th>
+                    <th>ações</th>
+                </tr>
+            <% }) %>
         </tbody>
     </table>
 </div>
