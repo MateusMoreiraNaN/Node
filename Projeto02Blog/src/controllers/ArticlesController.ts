@@ -5,7 +5,7 @@ import { Category } from "../models/Category";
 
 export const articles = async (req: Request, res: Response)=>{
     res.render("admin/articles/index")
-    res.redirect('admin/articles')
+    
 }
 
 export const adminArticles = async (req: Request, res: Response)=>{
