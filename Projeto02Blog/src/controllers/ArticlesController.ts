@@ -67,3 +67,22 @@ export const save = async (req: Request, res: Response)=>{
     }
     */
 }
+
+export const deleteId = async (req: Request, res: Response)=>{
+    let { id } = req.body
+
+    if(id){
+        if(!isNaN(id)){
+            await Article.destroy({
+                where: {
+                    id: id
+                }
+            })
+            res.redirect("/admin/articles")
+        }else{
+            res.redirect("/admin/articles")
+        }
+    }else{
+        res.redirect("/admin/articles")
+    }
+}
