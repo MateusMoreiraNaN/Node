@@ -1,6 +1,7 @@
-import { Model, DataTypes } from "sequelize"
+import { Model, DataTypes, Sequelize } from "sequelize"
 import { sequelize } from "../instances/mysql"
 import { Category} from './Category'
+import { articles } from "../controllers/ArticlesController"
 
 
 export interface ArticlesInstance extends Model{
@@ -17,7 +18,8 @@ export const Article = sequelize.define<ArticlesInstance>("Articles",{
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
-        primaryKey: true
+        primaryKey: true,
+        allowNull: false
     },
     title:{
         type: DataTypes.STRING,
@@ -27,7 +29,7 @@ export const Article = sequelize.define<ArticlesInstance>("Articles",{
     },
     categoryId:{
         type: DataTypes.NUMBER,
-        allowNull: false
+        allowNull:  false
     },
     body:{
         type: DataTypes.STRING,
@@ -40,4 +42,6 @@ export const Article = sequelize.define<ArticlesInstance>("Articles",{
 
 Category.hasMany(Article)
 Article.belongsTo(Category)
+
+//Article.sync({force: true}) 
 

@@ -5,11 +5,21 @@ import { Category } from "../models/Category";
 import { categories } from "./CategoriesController";
 
 export const articles = async (req: Request, res: Response)=>{
+    /*
     Article.findAll({
-        include: [{model: Category}]
+        
+        include:[{model:Category, required: true}]
     }).then(articles =>{
         res.render("admin/articles/index",{articles: articles})
     })
+    */
+
+    let articles = await Article.findAll({include:[{model:Category, required: true}]})
+    if(articles){
+        res.render("admin/articles/index",{articles: articles})
+    }
+    
+
     
 }
 
@@ -25,13 +35,13 @@ export const adminArticles = async (req: Request, res: Response)=>{
 export const save = async (req: Request, res: Response)=>{
     let { title } = req.body
     let { body } = req.body
-    let { categoria } = req.body
+    let { categoria }  = req.body
 
     if(title && body && categoria){
         let newArticle = new Article()
 
         newArticle.title = title,
-        newArticle.body = body
+        newArticle.body = body,
         newArticle.categoryId = categoria
 
         await newArticle.save()
