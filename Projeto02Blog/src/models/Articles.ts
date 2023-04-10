@@ -10,7 +10,8 @@ export interface ArticlesInstance extends Model{
     id: number,
     categoryId: number,
     body: string,
-    categoria: string
+    categoria: string,
+    slug: string
     
 }
 
@@ -32,6 +33,10 @@ export const Article = sequelize.define<ArticlesInstance>("Articles",{
         allowNull:  false
     },
     body:{
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    slug:{
         type: DataTypes.STRING,
         allowNull: false
     }

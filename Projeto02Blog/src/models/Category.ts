@@ -4,7 +4,7 @@ import { Article } from "./Articles"
 
 export interface CategoryInstance extends Model{
     title: string,
-    //slug: string,
+    slug: string,
     id: number,
   
 
@@ -23,13 +23,12 @@ export const Category = sequelize.define<CategoryInstance>("Category",{
         //autoIncrement: true,
         allowNull: false
         
-    }
-    /*
+    },
     slug:{
         type: DataTypes.STRING,
         allowNull: false
     },
-    */
+
     
 },{
     tableName: 'category',
