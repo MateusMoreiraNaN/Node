@@ -11,3 +11,21 @@ export const home = async (req: Request, res: Response)=>{
 
     
 }
+
+export const slug = async (req: Request, res: Response)=>{
+    let { slug } = req.params
+
+    if(slug){
+        await Article.findOne({
+            where:{
+                slug: slug
+            }
+
+            
+        })
+
+        res.render("article", {Article: Article})
+    }else{
+        res.redirect("/")
+    }
+}

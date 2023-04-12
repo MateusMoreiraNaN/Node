@@ -3,6 +3,7 @@ import { Op, where } from "sequelize";
 import { Article, ArticlesInstance } from '../models/Articles'
 import { Category } from "../models/Category";
 import { categories } from "./CategoriesController";
+import slugify from "slugify";
 
 export const articles = async (req: Request, res: Response)=>{
     /*
@@ -36,6 +37,7 @@ export const save = async (req: Request, res: Response)=>{
     let { title } = req.body
     let { body } = req.body
     let { categoria }  = req.body
+    let { slug } = req.body
 
     if(title && body && categoria){
         let newArticle = new Article()
@@ -43,6 +45,7 @@ export const save = async (req: Request, res: Response)=>{
         newArticle.title = title,
         newArticle.body = body,
         newArticle.categoryId = categoria
+        newArticle.slug = slugify(body)
 
         await newArticle.save()
     }else{

@@ -8,6 +8,7 @@ import * as CategoriesController from '../controllers/CategoriesController'
 const router = Router()
 
 router.get('/', HomeController.home)
+router.get('/:slug', HomeController.slug)
 router.get('/categories', CategoriesController.categories)
 router.get('/admin/categories/new', CategoriesController.admin)
 router.post('/categories/delete', CategoriesController.deleteId)
