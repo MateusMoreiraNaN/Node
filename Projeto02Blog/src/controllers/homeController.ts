@@ -23,7 +23,7 @@ export const slug = async (req: Request, res: Response)=>{
             slug: slug
     }}).then(Article =>{
         if(slug){
-        
+            //slug
             res.render("article", {Article: Article})
         }else{
             res.redirect("/")
