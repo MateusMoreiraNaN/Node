@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import { Op, where } from "sequelize";
 import { Article } from "../models/Articles";
+import slugify from "slugify";
+import { title } from "process";
 
 export const home = async (req: Request, res: Response)=>{
 
@@ -13,19 +15,21 @@ export const home = async (req: Request, res: Response)=>{
 }
 
 export const slug = async (req: Request, res: Response)=>{
-    let { slug } = req.params
+    let slug = req.params.slug
+    
+    
+    await Article.findOne({
+        where:{
+            slug: slug
+    }}).then(Article =>{
+        if(slug){
+        
+            res.render("article", {Article: Article})
+        }else{
+            res.redirect("/")
+        }
+    })
 
-    if(slug){
-        await Article.findOne({
-            where:{
-                slug: slug
-            }
 
-            
-        })
-
-        res.render("article", {Article: Article})
-    }else{
-        res.redirect("/")
-    }
+    
 }
