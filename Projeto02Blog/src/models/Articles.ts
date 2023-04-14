@@ -48,5 +48,5 @@ export const Article = sequelize.define<ArticlesInstance>("Articles",{
 Category.hasMany(Article)
 Article.belongsTo(Category)
 
-//Article.sync({force: true}) 
+
 

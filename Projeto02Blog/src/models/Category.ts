@@ -6,6 +6,7 @@ export interface CategoryInstance extends Model{
     title: string,
     slug: string,
     id: number,
+    articles: string
   
 
     
@@ -28,6 +29,11 @@ export const Category = sequelize.define<CategoryInstance>("Category",{
         type: DataTypes.STRING,
         allowNull: false
     },
+    articles:{
+        type: DataTypes.STRING,
+        allowNull: false
+    }
+    
 
     
 },{
@@ -35,5 +41,6 @@ export const Category = sequelize.define<CategoryInstance>("Category",{
     timestamps: false
 })
 
-//Category.sync({force:false}) 
+ 
+
 
