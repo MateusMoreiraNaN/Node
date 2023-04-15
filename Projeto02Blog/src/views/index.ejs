@@ -11,16 +11,16 @@
             <a class="btn btn-primary btn-lg" href="#" role="button">Leia mais</a>
         </div>
         <br/>
-        <% articles.forEach(article => { %>
-           <div class="card">
-            <div class="card-header">
-                <h2><%= article.title %></h2>
+        <% articles.forEach(article =>{ %>
+            <div class="card">
+                <div class="card-header">
+                    <h2><%= article.title %></h2>
+                </div>
+                <div class="card-body">
+                    <a href="/<%= article.slug %>" class="btn btn-success">Ler artigo</a>
+                </div>
             </div>
-            <div class="card-body">
-                <a href="/<%= article.slug %>" class="btn btn-success">Ler artigo</a>
-            </div>
-           </div>
-        <%}) %> 
+        <% }) %>
         
     </div>
 </body>
