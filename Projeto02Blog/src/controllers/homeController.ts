@@ -84,15 +84,17 @@ export const categorySlug = async (req: Request, res: Response)=>{
         if(category){
             let categories = await Category.findAll() 
             if(categories){
-                res.render('index',{articles: category.articles, categories: categories})
-            }
+                res.render('index',{articles: category.Articles, categories: categories})
 
+                console.log(category.Articles);
+                
+            }
+        }
     }else{
         res.redirect("/")
     }
-
-        
-    }
-    
-    
+       
 }
+    
+
+

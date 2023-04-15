@@ -15,7 +15,7 @@ export interface ArticlesInstance extends Model{
     
 }
 
-export const Article = sequelize.define<ArticlesInstance>("Articles",{
+export const Article = sequelize.define<ArticlesInstance>("articles",{
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,

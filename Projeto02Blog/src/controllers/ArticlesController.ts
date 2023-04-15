@@ -34,12 +34,12 @@ export const adminArticles = async (req: Request, res: Response)=>{
 }
 
 export const save = async (req: Request, res: Response)=>{
-    let { title } = req.body
-    let { body } = req.body
-    let { categoria }  = req.body
-    let { slug } = req.body
+    let title = req.body.title
+    let body  = req.body.body
+    let categoria   = req.body.categoria
+    let slug  = req.body.slug
 
-    if(title && body && categoria){
+    if(title && body && categoria && slug){
         let newArticle = new Article()
 
         newArticle.title = title,
