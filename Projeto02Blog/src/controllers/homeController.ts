@@ -4,6 +4,7 @@ import { Article } from "../models/Articles";
 import slugify from "slugify";
 import { title } from "process";
 import { Category, CategoryInstance } from "../models/Category";
+import { articles } from "./ArticlesController";
 
 
 export const home = async (req: Request, res: Response)=>{
@@ -75,7 +76,7 @@ export const categorySlug = async (req: Request, res: Response)=>{
 
     if(slug){
         let category = await Category.findOne({
-            include:[{model:Article, required: true}],
+            include:[{model:Article}],
             where:{
                 slug: slug
             },
@@ -83,10 +84,11 @@ export const categorySlug = async (req: Request, res: Response)=>{
         })
         if(category){
             let categories = await Category.findAll() 
-            if(categories){
-                res.render('index',{articles: category.Articles, categories: categories})
+            let articles = await Article.findAll()
+            if(categories && articles){
+                res.render('index',{articles: articles, categories: categories})
 
-                console.log(category.Articles);
+              
                 
             }
         }

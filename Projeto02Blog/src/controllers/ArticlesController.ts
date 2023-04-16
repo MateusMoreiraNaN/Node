@@ -39,7 +39,7 @@ export const save = async (req: Request, res: Response)=>{
     let categoria   = req.body.categoria
     let slug  = req.body.slug
 
-    if(title && body && categoria && slug){
+    if(title && body && categoria){
         let newArticle = new Article()
 
         newArticle.title = title,
