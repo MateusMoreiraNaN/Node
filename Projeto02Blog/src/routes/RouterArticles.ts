@@ -5,6 +5,7 @@ const router = Router()
 
 router.get('/admin/articles', ArticlesController.articles)
 router.get('/admin/articles/new', ArticlesController.adminArticles)
+router.get('/admin/articles/edit/:id', ArticlesController.edit)
 router.post('/articles/save', ArticlesController.save)
 router.post('/articles/delete', ArticlesController.deleteId)
 

@@ -89,3 +89,23 @@ export const deleteId = async (req: Request, res: Response)=>{
         res.redirect("/admin/articles")
     }
 }
+
+export const edit = async(req:Request, res: Response)=>{
+    let { id } = req.params
+
+    let artigo = await Article.findByPk(id)
+
+    let categories = await Category.findAll()
+
+    if(artigo != undefined && categories){
+        if(req.body.title){
+            artigo.title = req.body.title
+        } 
+
+        res.render("admin/articles/edit", {artigo:artigo,categories: categories})
+    }else{
+        res.redirect("/admin/articles")
+    }
+
+    
+}

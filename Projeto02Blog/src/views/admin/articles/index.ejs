@@ -22,7 +22,7 @@
                     <th><%= Article.title %></th>
                     <th><%= Article.Category.title %></th>
                     <th>
-                        <a href="" class="btn btn-warning">Editar</a>
+                        <a href="/admin/articles/edit/<%= Article.id %>" class="btn btn-warning">Editar</a>
 
                         <form method="POST" action="/articles/delete" style="display: inline;" onsubmit="confirmar(event, this)">
                             <input type="hidden" name="id" value="<%= Article.id %>">

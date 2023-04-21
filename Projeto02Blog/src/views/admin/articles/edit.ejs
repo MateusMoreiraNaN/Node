@@ -1,0 +1,35 @@
+<%- include('../../partials/header.ejs'); -%>
+<%- include('../../partials/navBar.ejs'); -%>
+
+<div class="container">
+    
+    <div class="card">
+            <div class="card-header">
+                <h2>Editar artigo</h2>
+            </div>
+            
+            <div class="card-body">
+                <form method="POST" class="form-control" action="/articles/save">
+                    <input type="text" name="title" placeholder="Define o título do artigo" value="<%= artigo.title %>"  ><br><br>
+                    <textarea class="form-control" placeholder="Escreva o artigo aqui!" name="body" id="article" >
+
+                    </textarea>
+                    <br>
+                    <label for="">Categoria</label>
+                    <select name="categoria" class="form-control">
+                      <% categories.forEach((categoria) =>{ %>
+                        <option value="<%= categoria.id %>"><%= categoria.title %></option>
+                      
+                      <% }) %>
+                    </select>
+                    <br>
+                    <button class="btn      btn-success">Editar</button>
+                </form>
+            </div>
+
+    </div>
+</div>
+
+
+
+<%- include('../../partials/footer.ejs'); -%>
