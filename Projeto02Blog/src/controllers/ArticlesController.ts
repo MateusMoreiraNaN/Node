@@ -112,3 +112,23 @@ export const edit = async(req:Request, res: Response)=>{
 
     
 }
+
+export const updateId = async(req: Request, res: Response) =>{
+    let { id } = req.body
+    let { title } = req.body
+    let { body }  = req.body
+
+    if(id){
+        await Article.update({title: title, body:body},{
+            where:{
+                id: id
+            }
+        })
+
+        res.redirect("/admin/articles")
+    }else{
+        res.redirect("/admin/articles")
+    }
+
+    
+}
