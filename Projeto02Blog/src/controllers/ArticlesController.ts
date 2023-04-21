@@ -98,9 +98,12 @@ export const edit = async(req:Request, res: Response)=>{
     let categories = await Category.findAll()
 
     if(artigo != undefined && categories){
-        if(req.body.title){
+        if(req.body.title && req.body.body && req.body.categoria){
             artigo.title = req.body.title
-        } 
+            artigo.body = req.body.body
+            artigo.categoria = req.body.categoria
+            
+        }
 
         res.render("admin/articles/edit", {artigo:artigo,categories: categories})
     }else{
