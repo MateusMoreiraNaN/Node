@@ -121,7 +121,7 @@ export const updateId = async(req: Request, res: Response) =>{
     let { categoria } = req.body
 
     if(id){
-        await Article.update({title: title, body:body, categoria: categoria},{
+        await Article.update({title: title, body:body, categoryId: categoria, slug:slugify(title)},{
             where:{
                 id: id
             }
