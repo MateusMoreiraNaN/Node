@@ -95,9 +95,10 @@ export const edit = async(req:Request, res: Response)=>{
 
     let artigo = await Article.findByPk(id)
 
-    let categories = await Category.findAll()
+    
 
-    if(artigo != undefined && categories){
+    if(artigo != undefined){
+        let categories = await Category.findAll()
         if(req.body.title && req.body.body && req.body.categoria){
             artigo.title = req.body.title
             artigo.body = req.body.body
@@ -117,9 +118,10 @@ export const updateId = async(req: Request, res: Response) =>{
     let { id } = req.body
     let { title } = req.body
     let { body }  = req.body
+    let { categoria } = req.body
 
     if(id){
-        await Article.update({title: title, body:body},{
+        await Article.update({title: title, body:body, categoria: categoria},{
             where:{
                 id: id
             }
