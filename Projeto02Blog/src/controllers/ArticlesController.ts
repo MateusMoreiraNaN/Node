@@ -170,8 +170,12 @@ export const page = async(req: Request, res: Response) =>{
             articles : articles
         }
 
+        let categories = await Category.findAll()
+        if(categories){
+            res.render("admin/articles/pages",{result: result, categories: categories})
+        }
 
-        res.json(articles)
+       
     }
     
 }
