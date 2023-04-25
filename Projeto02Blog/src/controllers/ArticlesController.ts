@@ -4,6 +4,7 @@ import { Article, ArticlesInstance } from '../models/Articles'
 import { Category } from "../models/Category";
 import { categories } from "./CategoriesController";
 import slugify from "slugify";
+import { NUMBER } from "sequelize";
 
 export const articles = async (req: Request, res: Response)=>{
     /*
@@ -132,5 +133,45 @@ export const updateId = async(req: Request, res: Response) =>{
         res.redirect("/admin/articles")
     }
 
+    
+}
+
+export const page = async(req: Request, res: Response) =>{
+    let page = parseInt(req.params.num)
+    let offset = 0
+
+    if(isNaN(page) || page == 1){
+        offset = 0
+    }else{
+        offset = page * 4
+    }
+
+    //1 = 0 - 3
+    //2 = 4 - 7
+    //3 = 8 - 11
+    //4 = 12 - 15
+    //5 = 16 -19
+
+    let articles = await Article.findAndCountAll({
+        limit: 4,
+        offset: offset
+    })
+
+    if(articles){
+        let next
+        if(offset  + 4 >= articles.count){
+            next = false
+        }else{
+            next = true
+        }
+
+        let result = {
+            next:next,
+            articles : articles
+        }
+
+
+        res.json(articles)
+    }
     
 }
