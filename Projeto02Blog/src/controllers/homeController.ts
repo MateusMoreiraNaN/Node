@@ -12,7 +12,8 @@ export const home = async (req: Request, res: Response)=>{
     let articles = await Article.findAll({
         order:[
             ['id','DESC']
-        ]
+        ],
+        limit: 4
     })
     if(articles){
         let categories = await Category.findAll()

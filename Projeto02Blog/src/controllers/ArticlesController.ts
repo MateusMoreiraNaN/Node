@@ -154,7 +154,10 @@ export const page = async(req: Request, res: Response) =>{
 
     let articles = await Article.findAndCountAll({
         limit: 4,
-        offset: offset
+        offset: offset,
+        order:[
+            ['id','DESC']
+        ]
     })
 
     if(articles){
