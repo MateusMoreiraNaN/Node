@@ -137,13 +137,13 @@ export const updateId = async(req: Request, res: Response) =>{
 }
 
 export const page = async(req: Request, res: Response) =>{
-    let page = parseInt(req.params.num)
+    let pages = parseInt(req.params.num)
     let offset = 0
 
-    if(isNaN(page) || page == 1){
+    if(isNaN(pages) || pages == 1){
         offset = 0
     }else{
-        offset = page * 4
+        offset = (pages - 1) * 4
     }
 
     //1 = 0 - 3
@@ -169,6 +169,7 @@ export const page = async(req: Request, res: Response) =>{
         }
 
         let result = {
+            pages: pages,
             next:next,
             articles : articles
         }
