@@ -1,6 +1,7 @@
 import { Model, DataTypes, Sequelize } from "sequelize"
 import { sequelize } from "../instances/mysql"
 import { Article } from "./Articles"
+import { STRING } from "sequelize"
 
 export interface CategoryInstance extends Model{
     title: string,
@@ -29,7 +30,7 @@ export const Category = sequelize.define<CategoryInstance>("Category",{
     slug:{
         type: DataTypes.STRING,
         allowNull: false
-    },
+    }
     
     
     
@@ -40,6 +41,6 @@ export const Category = sequelize.define<CategoryInstance>("Category",{
     timestamps: false
 })
 
- 
+//Article.sync({ force: false})
 
 

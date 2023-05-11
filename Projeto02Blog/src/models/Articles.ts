@@ -41,12 +41,11 @@ export const Article = sequelize.define<ArticlesInstance>("Articles",{
         allowNull: false
     }
 },{
-    tableName: 'articles',
+    tableName: 'article',
     timestamps: false
 })
 
 Category.hasMany(Article)
 Article.belongsTo(Category)
-
 
 
