@@ -3,6 +3,7 @@ import path from 'path'
 import dotenv from 'dotenv'
 import RouterCategory from './routes/RouterCategory'
 import RouterArticles from './routes/RouterArticles'
+import RouterUser from './routes/User'
 //import mustache from 'mustache-express'
 import ejs from 'express-ejs-layouts'
 import bodyParser from 'body-parser'
@@ -25,6 +26,7 @@ server.use(bodyParser.json())
 
 server.use(RouterCategory)
 server.use(RouterArticles)
+server.use(RouterUser)
 
 
 
