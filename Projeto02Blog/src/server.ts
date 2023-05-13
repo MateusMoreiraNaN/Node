@@ -33,10 +33,11 @@ server.use(express.urlencoded({extended: true}));
 server.use(bodyParser.urlencoded({extended: false}))
 server.use(bodyParser.json())
 
+server.use(sessionRouter)
 server.use(RouterCategory)
 server.use(RouterArticles)
 server.use(RouterUser)
-server.use(sessionRouter)
+
 
 
 
