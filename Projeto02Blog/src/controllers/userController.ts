@@ -25,5 +25,11 @@ export const save = async (req: Request, res: Response)=>{
         await newUser.save()
     }
 
-    res.redirect('/')
+    res.redirect('/admin/users/index')
+}
+
+export const adminIndex = async(req: Request, res: Response)=>{
+    User.findAll().then(users=>{
+        res.render("admin/users/index", {users: users})
+    })
 }
