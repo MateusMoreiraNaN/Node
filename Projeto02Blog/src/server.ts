@@ -21,6 +21,8 @@ server.set('views', path.join(__dirname, 'views'));
 
 //1 - 1000
 //60 - 6000
+
+//Redis
 server.use(session({
     secret: "?Ub-crOklGLBR2-RiGlkA#=c&lbRibRafr?Spldru+h+trU@reRohas6Cit4@g-4fdhgdfd5yertt5e5rr$%$%¨%¨$%&&%¨&268644ghdg67dh4ddg6hdg7hddg67hddg8h7dddd8dr7td7y6y768766876r67767768767¨&¨&*&&*", //chave de segurança
     cookie: {maxAge: 30000}
