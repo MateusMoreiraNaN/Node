@@ -6,7 +6,8 @@ import { STRING } from "sequelize"
 export interface UserInstance extends Model{
     email: string,
     password: string,
-    id: number
+    id: number,
+   
     
   
 

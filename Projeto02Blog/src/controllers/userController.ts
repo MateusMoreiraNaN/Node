@@ -14,18 +14,28 @@ export const save = async (req: Request, res: Response)=>{
     let { email } = req.body
     let { password } = req.body
 
-    let salt = bcrypt.genSaltSync(10)
-    let hash = bcrypt.hashSync(password, salt)
-
-    if(email && password && hash){
-        let newUser = new User()
-
-        newUser.email = email
-        newUser.password = hash
-        await newUser.save()
+    if(User){
+        await User.findOne({where:{email:email}})
+        
+        if(email == undefined){
+            
+            let salt = bcrypt.genSaltSync(10)
+            let hash = bcrypt.hashSync(password, salt)
+            if(email && password && hash){
+                let newUser = new User()
+        
+                newUser.email = email
+                newUser.password = hash
+                await newUser.save()
+            
+            }
+            res.redirect('/admin/users/index')
+        }else{
+            res.redirect("/admin/users/create")
+        }
     }
 
-    res.redirect('/admin/users/index')
+    
 }
 
 export const adminIndex = async(req: Request, res: Response)=>{
