@@ -98,7 +98,7 @@ export const authenticate = async(req:Request, res: Response)=>{
                 res.redirect('/admin/users/login')
             }
         }else{
-            res.redirect('/admin/users/login')
+            res.redirect('/login')
         }
 
     }
