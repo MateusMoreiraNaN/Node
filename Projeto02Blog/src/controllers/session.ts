@@ -6,11 +6,11 @@ declare module "express-session" {
   interface SessionData {
     treinamento: string;
     ano: number,
-    email: string,
+    email2: string,
     //user:string,
     //username: string,
     //id: number
-    user: { [key: string]: any };
+    user2: { [key: string]: any };
    
     
     
@@ -31,10 +31,10 @@ declare module "express-session" {
 export const sessionRouter = async (req: Request, res: Response) => {
     req.session.treinamento = "Formação em Node.js"
     req.session.ano = 2023
-    req.session.email = 'victorr@udemy.com'
+    req.session.email2 = 'victorr@udemy.com'
     
-    req.session.user = {
-        username: 'mateusmoreira',
+    req.session.user2 = {
+        username2: 'mateusmoreira',
         email: 'email@gmail.com',
         id: 10
     }
@@ -46,7 +46,7 @@ export const leitura = async (req: Request, res: Response)=>{
     res.json({
         treinamento: req.session.treinamento,
         ano: req.session.ano,
-        email: req.session.email,
+        email: req.session.email2,
         user: req.session.user
     })
 }

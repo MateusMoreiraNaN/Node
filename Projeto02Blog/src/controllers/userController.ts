@@ -3,6 +3,20 @@ import { User, UserInstance } from "../models/User"
 import bcrypt, { hash } from 'bcrypt'
 import { write } from "fs"
 
+import "express-session";
+declare module "express-session" {
+  interface SessionData {
+    user: { email: string; id: number },
+    
+   
+    
+    
+    
+  }
+  
+
+}
+
 export const users = async (req: Request, res: Response) => {
     res.send("Listagem de usúarios")
 }
@@ -18,7 +32,7 @@ export const save = async (req: Request, res: Response)=>{
     if(User){
         await User.findOne({where:{email:email}})
         
-        if(email == undefined){
+        if(email != undefined){
             
             let salt = bcrypt.genSaltSync(10)
             let hash = bcrypt.hashSync(password, salt)
@@ -54,12 +68,22 @@ export const authenticate = async(req:Request, res: Response)=>{
     let { password } = req.body
 
     if(User){
-        await User.findOne({where:{email:email}})
+        let user = await User.findOne({where:{email:email}})
 
-        if(email != undefined){
+        if(user != undefined){
             //validar senha
             
-            let correct = bcrypt.compareSync(password, email.password)
+            let correct = await bcrypt.compareSync(password, user.password)
+            if(correct){
+                req.session.user = {
+                    id: user.id,
+                    email: user.email
+                }
+
+                res.json(req.session.user)
+            }else{
+                res.redirect('/admin/users/login')
+            }
         }else{
             res.redirect('/admin/users/login')
         }
