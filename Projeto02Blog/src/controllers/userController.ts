@@ -2,6 +2,7 @@ import { Request, Response } from "express"
 import { User, UserInstance } from "../models/User"
 import bcrypt, { hash } from 'bcrypt'
 import { write } from "fs"
+import adminAuth from '../Middlewares/authenticate'
 
 import "express-session";
 declare module "express-session" {
@@ -18,7 +19,19 @@ declare module "express-session" {
 }
 
 export const users = async (req: Request, res: Response) => {
-    res.send("Listagem de usúarios")
+    /*
+    if(req.session.user == undefined){
+        res.redirect("/")
+    }
+    */
+
+    if(User){
+        let admin = await User.findAll()
+
+        if(admin){
+            res.render("admin/users/index", {users:users})
+        }
+    }
 }
 
 export const createUser = async (req: Request, res: Response) => {
@@ -80,7 +93,7 @@ export const authenticate = async(req:Request, res: Response)=>{
                     email: user.email
                 }
 
-                res.json(req.session.user)
+                res.redirect("/admin/articles")
             }else{
                 res.redirect('/admin/users/login')
             }

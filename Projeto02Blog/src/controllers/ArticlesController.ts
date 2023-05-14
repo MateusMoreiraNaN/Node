@@ -143,7 +143,7 @@ export const page = async(req: Request, res: Response) =>{
     if(isNaN(pages) || pages == 1){
         offset = 0
     }else{
-        offset = (pages - 1) * 4
+        offset = (pages - 0) * 4
     }
 
     //1 = 0 - 3
@@ -153,7 +153,7 @@ export const page = async(req: Request, res: Response) =>{
     //5 = 16 -19
 
     let articles = await Article.findAndCountAll({
-        limit: 4,
+        limit: 6,
         offset: offset,
         order:[
             ['id','DESC']
