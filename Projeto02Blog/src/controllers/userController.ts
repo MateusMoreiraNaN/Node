@@ -103,3 +103,9 @@ export const authenticate = async(req:Request, res: Response)=>{
 
     }
 }
+
+export const logout = async(req: Request, res: Response)=>{
+    req.session.user = undefined
+    res.redirect("/")
+    
+}

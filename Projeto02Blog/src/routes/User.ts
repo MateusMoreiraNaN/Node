@@ -10,8 +10,8 @@ router.get("/admin/users/login",UserController.login)
 router.get("/admin/users/create", UserController.createUser)
 router.post("/users/create",UserController.save)
 router.get("/admin/users/index", adminAuth,UserController.adminIndex)
-
 router.post("/authenticate",UserController.authenticate)
+router.get("/admin/users/logout", UserController.logout)
 
 
 export default router
