@@ -7,7 +7,7 @@ const router = Router()
 
 router.get("/admin/users",adminAuth, UserController.users)
 router.get("/admin/users/login",UserController.login)
-router.get("/admin/users/create", UserController.createUser)
+router.get("/admin/users/create", adminAuth, UserController.createUser)
 router.post("/users/create",UserController.save)
 router.get("/admin/users/index", adminAuth,UserController.adminIndex)
 router.post("/authenticate",UserController.authenticate)
