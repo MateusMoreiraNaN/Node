@@ -1,10 +1,11 @@
 import { Router } from "express";
-import * as UserController from '../controllers/userHomeController'
+import * as UserHomeController from '../controllers/userHomeController'
 
 
 
 const router = Router()
 
-router.get("/usershome", UserController.usershome)
+router.get("/usershome", UserHomeController.usershome)
+router.get("/user/createhome", UserHomeController.usercreate)
 
 export default router
