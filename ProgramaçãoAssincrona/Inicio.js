@@ -18,7 +18,7 @@ function enviarEmail(corpo, para){
 
 console.log("Inicio do envio de e-mail");
 enviarEmail("Oi, seja bem vindo ao guia","mateusgodoi741@gmail.com")
-console.log("Seu e-mail foi enviado, deve chdegar em minutos")
+console.log("Seu e-mail foi enviado, deve chegar em minutos")
 console.log("TUDO OK!!");
 console.log("Calma");
 console.log("Calma");
