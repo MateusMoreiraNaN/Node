@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import RouterCategory from './routes/RouterCategory'
 import RouterArticles from './routes/RouterArticles'
 import RouterUser from './routes/User'
+import RouterUserHome from './routes/UserHome'
 import sessionRouter from './routes/session'
 //import mustache from 'mustache-express'
 import ejs from 'express-ejs-layouts'
@@ -39,6 +40,7 @@ server.use(sessionRouter)
 server.use(RouterCategory)
 server.use(RouterArticles)
 server.use(RouterUser)
+server.use(RouterUserHome)
 
 
 
