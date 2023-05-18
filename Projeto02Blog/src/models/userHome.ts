@@ -5,8 +5,9 @@ import { STRING } from "sequelize"
 
 export interface UserdhomeInstance extends Model{
     email: string,
-    password: string,
-    id: number,
+    password2: string,
+    id2: number,
+    
    
     
   
@@ -15,7 +16,7 @@ export interface UserdhomeInstance extends Model{
 }
 
 export const Userhome = sequelize.define<UserdhomeInstance>("Userhome",{
-    id: {
+    id2: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
@@ -25,7 +26,7 @@ export const Userhome = sequelize.define<UserdhomeInstance>("Userhome",{
         type: DataTypes.STRING,
         allowNull: false
     },
-    password:{
+    password2:{
         type: DataTypes.STRING,
         allowNull: false
     }

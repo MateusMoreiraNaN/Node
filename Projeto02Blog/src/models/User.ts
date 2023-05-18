@@ -7,6 +7,7 @@ export interface UserInstance extends Model{
     email: string,
     password: string,
     id: number,
+    
    
     
   
