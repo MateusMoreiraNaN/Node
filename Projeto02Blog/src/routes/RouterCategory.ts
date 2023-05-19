@@ -2,13 +2,14 @@ import { Router } from 'express'
 import * as HomeController from '../controllers/homeController'
 import * as CategoriesController from '../controllers/CategoriesController'
 import adminAuth from '../Middlewares/authenticate'
+import homeAuth from '../Middlewares/authenticatehome'
 
 
 
 
 const router = Router()
 
-router.get('/', HomeController.home)
+router.get('/', homeAuth, HomeController.home)
 router.get('/:slug', HomeController.slug)
 router.get('/category/:slug', HomeController.categorySlug)
 router.get('/categorty')

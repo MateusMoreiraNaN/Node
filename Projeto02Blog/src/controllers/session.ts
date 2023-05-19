@@ -10,7 +10,7 @@ declare module "express-session" {
     //user:string,
     //username: string,
     //id: number
-    user2: { [key: string]: any };
+    user3: { [key: string]: any };
    
     
     
@@ -33,8 +33,8 @@ export const sessionRouter = async (req: Request, res: Response) => {
     req.session.ano = 2023
     req.session.email2 = 'victorr@udemy.com'
     
-    req.session.user2 = {
-        username2: 'mateusmoreira',
+    req.session.user3 = {
+        username3: 'mateusmoreira',
         email: 'email@gmail.com',
         id: 10
     }
