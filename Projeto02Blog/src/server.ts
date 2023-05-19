@@ -17,7 +17,8 @@ dotenv.config()
 const server = express()
 
 server.set('view engine', 'ejs');
-server.set('views', path.join(__dirname, 'views'));
+//server.set('views', path.join(__dirname, 'views'));
+server.set('views', path.join(__dirname, '/views'))
 
 
 //1 - 1000
