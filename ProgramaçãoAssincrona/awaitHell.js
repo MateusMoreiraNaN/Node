@@ -48,9 +48,12 @@ function enviarEmail(corpo, para){
 const principal = async ()=>{
     let id = await pegarId()
     let email = await buscarEmailNoBanco(id)
-    await enviarEmail("Olá, como vai?", email)
-    console.log("Email enviado");
-    
+    try{
+        await enviarEmail("Olá, como vai?", email)
+        console.log("Email enviado");
+    }catch(erro){
+        console.log(erro);
+    }
 }
 
 principal()
