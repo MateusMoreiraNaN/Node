@@ -13,7 +13,7 @@ pegarId().then((id) =>{
 */
 
 const pegarId = ()=>{
-    return new Promise((resolve, reeject)=>{
+    return new Promise((resolve, reject)=>{
         setTimeout(()=>{
             resolve(5)
         },1500)
