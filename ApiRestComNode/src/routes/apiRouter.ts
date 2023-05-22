@@ -9,6 +9,7 @@ router.get('/games', ApiController.games)
 router.get('/game/:id', ApiController.gameId)
 router.delete('/game/:id', ApiController.deleteGame)
 router.put('/game/:id', ApiController.updateGame)
+router.patch('/game/:id', ApiController.oneUpdate)
 
 
 export default router

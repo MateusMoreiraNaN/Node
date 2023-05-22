@@ -45,15 +45,40 @@ export const gameId = async(req: Request, res: Response)=>{
 export const deleteGame = async(req: Request, res: Response)=>{
     let { id } = req.params
 
-    await Games.destroy({
-        where:{id}
-    })
-    res.json({})
+    if(isNaN(parseInt(id))){
+        res.sendStatus(400)
+        await Games.destroy({
+            where:{id}
+        })
+        res.json({})
+    }else{
+        res.sendStatus(200)
+    }
 }
 
 export const updateGame = async(req: Request, res:Response)=>{
     let { id } = req.params
     let { title, year, price } = req.body
+
+    if(isNaN(parseInt(id))){
+        let update = await Games.findByPk(id)
+        if(update){
+            update.title = title
+            update.year = year
+            update.price = price
+
+            await update.save()
+
+            res.json({update})
+        }
+    }else{
+        res.sendStatus(200)
+    }
+}
+
+export const oneUpdate = async(req: Request, res: Response)=>{
+    let { title, year, price } = req.body
+    let { id } = req.params
 
     let update = await Games.findByPk(id)
     if(update){
