@@ -41,3 +41,28 @@ export const gameId = async(req: Request, res: Response)=>{
 
     
 }
+
+export const deleteGame = async(req: Request, res: Response)=>{
+    let { id } = req.params
+
+    await Games.destroy({
+        where:{id}
+    })
+    res.json({})
+}
+
+export const updateGame = async(req: Request, res:Response)=>{
+    let { id } = req.params
+    let { title, year, price } = req.body
+
+    let update = await Games.findByPk(id)
+    if(update){
+        update.title = title
+        update.year = year
+        update.price = price
+
+        await update.save()
+
+        res.json({update})
+    }
+}
