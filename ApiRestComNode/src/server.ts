@@ -3,10 +3,14 @@ import path from 'path'
 import dotenv from 'dotenv'
 import apiRouter from './routes/apiRouter'
 import bodyParser from 'body-parser'
+import  Cors from 'cors'
 
 dotenv.config()
 
 const server = express()
+
+server.use(Cors())
+
 server.use(express.urlencoded({extended: true}));
 server.use(bodyParser.urlencoded({extended: false}))
 server.use(bodyParser.json())
