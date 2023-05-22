@@ -4,7 +4,7 @@ import { sequelize } from "../instances/msql";
 export interface GamesIntance extends Model{
     id: number,
     title: string,
-    year: number,
+    year: string,
     price: number
 }
 
@@ -20,7 +20,7 @@ export const Games = sequelize.define<GamesIntance>("Games",{
         allowNull: false
     },
     year:{
-        type: DataTypes.NUMBER,
+        type: DataTypes.STRING,
         allowNull: false
     },
     price:{
