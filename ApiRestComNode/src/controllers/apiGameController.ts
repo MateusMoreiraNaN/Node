@@ -62,7 +62,7 @@ export const updateGame = async(req: Request, res:Response)=>{
 
     if(isNaN(parseInt(id))){
         let update = await Games.findByPk(id)
-        if(update){
+        if(update != undefined){
             update.title = title
             update.year = year
             update.price = price
