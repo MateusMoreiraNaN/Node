@@ -9,9 +9,13 @@ import axios from 'axios';
 
 const App = ()=>{
   
-  const [Games, setGames] = useState<any[]>([])
+  
+
+  const[game, setGame]=useState([])
 
   useEffect(()=>{
+    
+    /*
     axios
       .get('http://localhost:2008/games').then((res)=>{
         console.log(res.data);
@@ -21,7 +25,15 @@ const App = ()=>{
         console.log(err);
         
       })
-      
+    */
+      const getGames = async() =>{
+        const res = await axios.get('http://localhost:2008/games')
+        //console.log(res.data);
+        setGame(res.data)
+        
+      }
+      getGames()
+
       
   },[])
    
@@ -29,7 +41,7 @@ const App = ()=>{
   return(
     <div>
         <div>
-          {Games.map((Games)=> <div>{Games.title}</div>)}
+          <h1>{title}</h1>
         </div>
 
       
