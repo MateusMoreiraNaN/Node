@@ -25,5 +25,18 @@ export const register = async(req: Request, res: Response)=>{
 }
 
 export const login = async(req: Request, res: Response)=>{
+    if(req.body.email && req.body.senha){
+        let email: string = req.body.email
+        let senha: string = req.body.senha
 
+        let user = await User.findOne({
+            where:{email, senha}
+        })
+
+        if(user){
+            res.json({status: true})
+        }else{
+            res.json({status: false})
+        }
+    }
 }
