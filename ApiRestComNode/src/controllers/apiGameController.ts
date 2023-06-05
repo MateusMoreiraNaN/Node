@@ -43,10 +43,10 @@ export const gameId = async(req: Request, res: Response)=>{
 }
 
 export const deleteGame = async(req: Request, res: Response)=>{
-    let { id } = req.params
+    let  id  = parseInt(req.params.id)
 
-    if(isNaN(parseInt(id))){
-        res.sendStatus(400)
+    if(!isNaN(id)){
+        //res.sendStatus(400)
         await Games.destroy({
             where:{id}
         })
@@ -57,19 +57,19 @@ export const deleteGame = async(req: Request, res: Response)=>{
 }
 
 export const updateGame = async(req: Request, res:Response)=>{
-    let { id } = req.params
+    let   id   = parseInt(req.params.id)
     let { title, year, price } = req.body
 
-    if(isNaN(parseInt(id))){
-        let update = await Games.findByPk(id)
-        if(update != undefined){
-            update.title = title
-            update.year = year
-            update.price = price
+    if(!isNaN(id)){
+        let GamePut = await Games.findByPk(id)
+        if(GamePut != undefined){
+            GamePut.title = title
+            GamePut.year = year
+            GamePut.price = price
 
-            await update.save()
+            await GamePut.save()
 
-            res.json({update})
+            res.json({GamePut})
         }
     }else{
         res.sendStatus(200)
