@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { User } from "../models/userModel";
-import passport from "../config/JWT";
+//import passport from "../config/JWT";
 import JWT from 'jsonwebtoken'
 import { generateToken } from "../config/JWT";
 
