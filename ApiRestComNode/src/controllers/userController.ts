@@ -18,9 +18,11 @@ export const register = async(req: Request, res: Response)=>{
             const token = generateToken(
                 {
                     id: newUser.id,
-                    expiresIn: '1h' 
+                    expiresIn: '5'
+                   
                 }
             )
+        
 
             res.json({id: newUser.id, token})
             return
@@ -49,9 +51,10 @@ export const login = async(req: Request, res: Response)=>{
             const token = generateToken(
                 {
                     id: user.id,
-                    expiresIn: '1h' 
+                    expiresIn: '5' 
                 }
             )
+            
             res.json({status: true, token})
         }else{
             res.json({status: false})
