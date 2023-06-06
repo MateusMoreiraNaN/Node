@@ -1,15 +1,16 @@
 import { Router } from "express";
+import { privateRouter } from "../config/JWT";
 
 import * as ApiController from '../controllers/apiGameController'
 
 const router = Router()
 
-router.post('/game',ApiController.game)
-router.get('/games', ApiController.games)
-router.get('/game/:id', ApiController.gameId)
-router.delete('/game/:id', ApiController.deleteGame)
-router.put('/game/:id', ApiController.updateGame)
-router.patch('/game/:id', ApiController.oneUpdate)
+router.post('/game', privateRouter , ApiController.game)
+router.get('/games', privateRouter , ApiController.games)
+router.get('/game/:id', privateRouter, ApiController.gameId)
+router.delete('/game/:id', privateRouter, ApiController.deleteGame)
+router.put('/game/:id', privateRouter, ApiController.updateGame)
+router.patch('/game/:id', privateRouter, ApiController.oneUpdate)
 
 
 export default router

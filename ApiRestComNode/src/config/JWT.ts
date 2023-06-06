@@ -80,7 +80,7 @@ export const generateToken = (data: object)=>{
     return JWT.sign(data, process.env.JWT_SECRET_KEY as string)
 }
 
-export const privateRouter = (req: Request, res: Response, next: NewableFunction)=>{
+export const privateRouter = (req: Request, res: Response, next: NextFunction)=>{
     const authFunction = passport.authenticate('jwt', (err: any, user: string)=>{
         req.user = user
         if(user){

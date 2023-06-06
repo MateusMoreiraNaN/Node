@@ -5,14 +5,14 @@ import JWT from 'jsonwebtoken'
 import { generateToken } from "../config/JWT";
 
 export const register = async(req: Request, res: Response)=>{
-    if(req.body.email && req.body.senha){
-        let { email, senha } = req.body
+    if(req.body.email && req.body.senha && req.body.name){
+        let { email, senha, name } = req.body
 
-        let hashUser = await User.findOne({where:email})
+        let hashUser = await User.findOne({where:{email}})
 
         if(!hashUser){
             let newUser = await User.create({
-                email, senha
+                email, senha, name
             })
 
             const token = generateToken(
@@ -35,12 +35,13 @@ export const register = async(req: Request, res: Response)=>{
 }
 
 export const login = async(req: Request, res: Response)=>{
-    if(req.body.email && req.body.senha){
+    if(req.body.email && req.body.senha && req.body.name){
         let email: string = req.body.email
         let senha: string = req.body.senha
+        let name: string = req.body.name
 
         let user = await User.findOne({
-            where:{email, senha}
+            where:{email, senha, name}
         })
 
         if(user){
