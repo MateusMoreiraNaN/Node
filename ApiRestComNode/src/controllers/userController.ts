@@ -18,7 +18,7 @@ export const register = async(req: Request, res: Response)=>{
             const token = generateToken(
                 {
                     id: newUser.id,
-                    expiresIn: '5'
+                    expiresIn: '5s'
                    
                 }
             )
@@ -51,7 +51,7 @@ export const login = async(req: Request, res: Response)=>{
             const token = generateToken(
                 {
                     id: user.id,
-                    expiresIn: '5' 
+                    expiresIn: '5s' 
                 }
             )
             
