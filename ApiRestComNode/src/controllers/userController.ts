@@ -1,5 +1,8 @@
 import { Request, Response } from "express";
 import { User } from "../models/userModel";
+import passport from "../config/JWT";
+import JWT from 'jsonwebtoken'
+import { generateToken } from "../config/JWT";
 
 export const register = async(req: Request, res: Response)=>{
     if(req.body.email && req.body.senha){
@@ -12,7 +15,14 @@ export const register = async(req: Request, res: Response)=>{
                 email, senha
             })
 
-            res.json({id: newUser.id})
+            const token = generateToken(
+                {
+                    id: newUser.id,
+                    expiresIn: '1h' 
+                }
+            )
+
+            res.json({id: newUser.id, token})
             return
         }else{
             res.json({error: 'E-mail já existe'})
@@ -34,7 +44,14 @@ export const login = async(req: Request, res: Response)=>{
         })
 
         if(user){
-            res.json({status: true})
+
+            const token = generateToken(
+                {
+                    id: user.id,
+                    expiresIn: '1h' 
+                }
+            )
+            res.json({status: true, token})
         }else{
             res.json({status: false})
         }
